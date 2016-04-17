@@ -1,12 +1,18 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import configureStore from 'src/configureStore'
+
+const store = configureStore()
 
 const rootEl = document.getElementById('example')
 
 let render = () => {
   const App = require('src/app.jsx').default
   ReactDOM.render(
-    (<App />),
+    <Provider store={store}>
+      <App />
+    </Provider>,
     rootEl
   )
 }
