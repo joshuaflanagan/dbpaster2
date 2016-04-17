@@ -1,10 +1,16 @@
 import { createStore, applyMiddleware } from 'redux'
+import createLogger from 'redux-logger';
 import rootReducer from 'src/reducers'
 
 export default function configureStore(initialState) {
+  const logger = createLogger({
+    collapsed: true
+  })
+
   const store = createStore(
     rootReducer,
-    initialState
+    initialState,
+    applyMiddleware(logger)
   )
 
   if (module.hot) {
