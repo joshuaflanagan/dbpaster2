@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-function simple(state={query: "waiting"}, action) {
+function simple(state={query: ""}, action) {
   switch(action.type) {
     case "QUERY_CHANGED":
       return {...state, query: action.query}
