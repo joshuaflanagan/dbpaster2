@@ -23,9 +23,9 @@ const mapDispatchToQueryProps = {
 QueryInput = connect()(QueryInput)
 
 let Echo = ({query}) => (
-  <div style={{"backgroundColor":"cornflowerblue", "minHeight": "20px", "width": "800px"}}>
+  <pre style={{"backgroundColor":"goldenrod", "minHeight": "20px", "width": "800px", padding: "6px"}}>
     { query }
-  </div>
+  </pre>
 )
 
 const mapStateToEchoProps = (state) => ({
