@@ -1,26 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux'
 
-class QueryInput extends React.Component {
-  textChanged(event) {
-    this.props.dispatch({
-      type: "QUERY_CHANGED",
-      query: event.target.value
-    })
-  }
+let QueryInput = ({query, textChanged}) => (
+  <textarea value={query} onChange={textChanged} rows="5" cols="80" />
+)
 
-  render() {
-    return (
-      <textarea onChange={this.textChanged.bind(this)} value={this.props.query} rows="5" cols="80"></textarea>
-    )
+const mapDispatchToQueryProps = (dispatch) => {
+  return {
+    textChanged: (event) => {
+      dispatch({
+        type: "QUERY_CHANGED",
+        query: event.target.value
+      })
+    }
   }
 }
 
-const mapDispatchToQueryProps = {
-}
-
-//QueryInput = connect(null, mapDispatchToQueryProps)(QueryInput)
-QueryInput = connect(state => ({query: state.query}))(QueryInput)
+QueryInput = connect(state => ({query: state.query}), mapDispatchToQueryProps)(QueryInput)
 
 let Echo = ({query}) => (
   <pre style={{"backgroundColor":"goldenrod", "minHeight": "20px", "width": "800px", padding: "6px"}}>
