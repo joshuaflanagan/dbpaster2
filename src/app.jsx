@@ -11,7 +11,7 @@ class QueryInput extends React.Component {
 
   render() {
     return (
-      <textarea onChange={this.textChanged.bind(this)} rows="5" cols="80"></textarea>
+      <textarea onChange={this.textChanged.bind(this)} value={this.props.query} rows="5" cols="80"></textarea>
     )
   }
 }
@@ -20,7 +20,7 @@ const mapDispatchToQueryProps = {
 }
 
 //QueryInput = connect(null, mapDispatchToQueryProps)(QueryInput)
-QueryInput = connect()(QueryInput)
+QueryInput = connect(state => ({query: state.query}))(QueryInput)
 
 let Echo = ({query}) => (
   <pre style={{"backgroundColor":"goldenrod", "minHeight": "20px", "width": "800px", padding: "6px"}}>
